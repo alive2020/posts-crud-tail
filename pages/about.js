@@ -12,7 +12,10 @@ function about() {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <h3>About page is here</h3>
+      <main className='h-screen bg-neutral-200'>
+      <h3 className='relative top-28 left-64'>About our Blog</h3>
+
+      </main>
     </div>
   );
 }

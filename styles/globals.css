@@ -1,9 +1,12 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 html,
 body {
+  max-width: 1152px;
+  background-color: #fafafa;
+  color: #21243d;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -17,4 +20,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.footerIcons:hover {
+  width: 0.7;
 }
