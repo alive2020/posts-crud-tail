@@ -2,7 +2,6 @@ import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton } from '@mui/material';
-
 function ArticlePost() {
   return (
     <div className='flex flex-row w-full h-52 bg-white py-3'>
@@ -29,7 +28,9 @@ function ArticlePost() {
         </div>
 
         <div className='flex flex-row font-normal text-sm my-5'>
-          <p className='text-white p-1 mr-5 rounded-2xl bg-gray-500'>6 Jan 2022</p>
+          <p className='text-white p-1 mr-5 rounded-2xl bg-gray-500'>
+            6 Jan 2022
+          </p>
           <p className='text-zinc-400'>History of Billionaires</p>
         </div>
         <p className='font-normal text-xs mb-5'>
