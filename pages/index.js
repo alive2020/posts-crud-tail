@@ -1,17 +1,26 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import ArticlePost from '../components/ArticlePost';
+import PostList from '../components/PostList';
 import NewPost from '../components/NewPost';
 import Post from '../components/Post';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState(null);
   // useEffect(() => {
   //   setOpenModal(false);
   // }, []);
 
-
+  // const handleEdit = () => {};
+  const handleEdit = (post) => {
+    let newArr = posts.filter((item) => item.id !== post.id);
+    newArr.unshift(post);
+    setPosts(newArr);
+    setIsModalOpen(false);
+    setPost(null);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -60,15 +69,35 @@ export default function Home() {
           <div className='flex'>
             <button
               className='bg-red-500 text-white py-1 px-3 rounded-sm justify-end hover:bg-red-700'
-              onClick={() => setIsModalOpen(!isModalOpen)}
+              onClick={() => {
+                setPost(null);
+                setIsModalOpen(!isModalOpen);
+              }}
             >
               Create a post
             </button>
-            {isModalOpen && <NewPost setIsModalOpen={setIsModalOpen} />}
+            {isModalOpen && (
+              <NewPost
+                post={post}
+                handleEdit={(post) => handleEdit(post)}
+                setPosts={(val) => setPosts([...posts, val])}
+                setIsModalOpen={setIsModalOpen}
+              />
+            )}
           </div>
           <div className=''>
-            <ArticlePost />
-            <ArticlePost />
+            <PostList
+              posts={posts}
+              handleEdit={(val) => {
+                setPost(val);
+                setIsModalOpen(true);
+              }}
+              handleDelete={(val) =>
+                setPosts(posts.filter((post) => post.id !== val))
+              }
+            />
+            {/* <ArticlePost /> */}
+            {/* <ArticlePost /> */}
           </div>
         </div>
       </main>
